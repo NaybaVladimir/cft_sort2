@@ -1,5 +1,7 @@
 package org.example.cft_sort2.service;
 
+import java.util.Arrays;
+
 public class DataSort {
     public String[] stringSort(String[] array) {
         String temp;
@@ -16,12 +18,25 @@ public class DataSort {
         return array;
     }
 
-    public String[] intSort(String[] array) {
-        return array;
+    public String[] intSort(String[] arrayStr) {
+        int[] array = Arrays.stream(arrayStr).mapToInt(Integer::parseInt).toArray();
+        int temp;
+        for (int i = array.length - 1; i > 0; i--) {
+            for (int j = 0; j < i; j++) {
+                if (array[j] > array[j + 1]) {
+                    temp = array[j];
+                    array[j] = array[j + 1];
+                    array[j + 1] = temp;
+                }
+
+            }
+        }
+
+        return Arrays.toString(array).replace("[", "").replace("]", "").replaceAll(" ", "").split(",");
     }
 
     public String[] invertCollection(String[] array) {
-
+        String[] strRet = new String[];
         return array;
     }
 }

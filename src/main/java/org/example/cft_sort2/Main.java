@@ -41,18 +41,28 @@ public class Main {
 
     public static void mainMenu(String[] args) {
         DataManipulation dataManipulation = new DataManipulation();
-        DataSort dataSort=new DataSort();
+        DataSort dataSort = new DataSort();
         Main main = new Main();
         JCommander.newBuilder()
                 .addObject(main)
                 .build()
                 .parse(args);
 
-
         List<String> list = dataManipulation.listI(main.listFile);
-        String[] array = dataSort.stringSort(list.toArray(new String[list.size()]));
-        System.out.println(list);
-        System.out.println(Arrays.toString(array));
+        String[] array = list.toArray(new String[list.size()]);
+
+        if (main.string)
+            array = dataSort.stringSort(array);
+
+        else if (main.integer)
+            array = dataSort.intSort(array);
+        else System.out.println("Тип данных не указан" + Arrays.toString(args));
+
+        if (main.descendingSort)
+            array = dataSort.invertCollection(array);
+
+
+
     }
 
 }
