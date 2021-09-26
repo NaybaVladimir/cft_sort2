@@ -2,7 +2,6 @@ package org.example.cft_sort2.fileIO;
 
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
-import java.util.List;
 
 public class OutputFile {
     private String uri;
@@ -12,12 +11,12 @@ public class OutputFile {
     }
 
     //Запись в файл
-    public void outFile(List<String> list) {
+    public void outFile(String[] str) {
         try (PrintWriter write = new PrintWriter(uri)) {
-            for (String el : list)
+            for (String el : str)
                 write.println(el);
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            System.out.println("Файл вывода не найден или нарушен порядок ввода пармматеров. Путь к файоу вывода: " + uri);
         }
 
     }

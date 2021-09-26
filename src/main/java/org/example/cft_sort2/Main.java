@@ -2,6 +2,7 @@ package org.example.cft_sort2;
 
 import com.beust.jcommander.JCommander;
 import com.beust.jcommander.Parameter;
+import org.example.cft_sort2.fileIO.OutputFile;
 import org.example.cft_sort2.service.DataManipulation;
 import org.example.cft_sort2.service.DataSort;
 
@@ -43,6 +44,7 @@ public class Main {
         DataManipulation dataManipulation = new DataManipulation();
         DataSort dataSort = new DataSort();
         Main main = new Main();
+        //Разбор паррматеров
         JCommander.newBuilder()
                 .addObject(main)
                 .build()
@@ -53,14 +55,14 @@ public class Main {
 
         if (main.string)
             array = dataSort.stringSort(array);
-
         else if (main.integer)
             array = dataSort.intSort(array);
         else System.out.println("Тип данных не указан" + Arrays.toString(args));
 
-        if (main.descendingSort)
+        if (main.descendingSort) {
             array = dataSort.invertCollection(array);
-
+        }
+        new OutputFile(main.listFile.get(0)).outFile(array);
 
 
     }

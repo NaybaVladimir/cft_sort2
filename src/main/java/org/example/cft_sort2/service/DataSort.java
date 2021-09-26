@@ -3,6 +3,7 @@ package org.example.cft_sort2.service;
 import java.util.Arrays;
 
 public class DataSort {
+    //Сортировка строк
     public String[] stringSort(String[] array) {
         String temp;
         for (int i = 0; i < array.length - 1; i++) {
@@ -18,6 +19,7 @@ public class DataSort {
         return array;
     }
 
+    //Сортировка чисел
     public String[] intSort(String[] arrayStr) {
         int[] array = Arrays.stream(arrayStr).mapToInt(Integer::parseInt).toArray();
         int temp;
@@ -32,11 +34,22 @@ public class DataSort {
             }
         }
 
-        return Arrays.toString(array).replace("[", "").replace("]", "").replaceAll(" ", "").split(",");
+        return Arrays.toString(array)
+                .replace("[", "")
+                .replace("]", "")
+                .replaceAll(" ", "")
+                .split(",");
     }
 
+
+    //Инвертирует массив с данными
     public String[] invertCollection(String[] array) {
-        String[] strRet = new String[];
-        return array;
+        String[] strRet = new String[array.length];
+        int x = 0;
+        for (int i = array.length - 1; i >= 0; i--) {
+            strRet[x] = array[i];
+            x++;
+        }
+        return strRet;
     }
 }
